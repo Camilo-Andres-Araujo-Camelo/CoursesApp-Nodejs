@@ -2,7 +2,7 @@ const { Router } = require('express');
 
 const {
   getAllCourses,
-  getCoursesInfo,
+  getCoursesVideos,
   createCourse,
   updateCourse
 } = require('../controllers/course.controller')
@@ -11,7 +11,7 @@ const router = Router();
 
 router.get('/courses', getAllCourses);
 
-router.get('/courses/cv', getCoursesInfo);
+router.get('/courses/videos', getCoursesVideos);
 
 router.post('/course', createCourse);
 

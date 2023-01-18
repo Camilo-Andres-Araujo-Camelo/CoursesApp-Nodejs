@@ -1,7 +1,6 @@
 const Course = require('../models/course.models');
 const CourseCategory = require('../models/courseCategory.models');
 const Category = require('../models/category.models');
-const CategoryVideo = require('../models/categoryVideo.models');
 const Video = require('../models/video.models');
 
 class CourseServices {
@@ -25,29 +24,23 @@ class CourseServices {
         attributes: {
           exclude: [ "createdAt", "updatedAt", 'categoryId']
         },
-        include: {
-          model: CourseCategory,
-          as: 'categorys',
-          attributes: ['categoryId'],// bien hasta aquí
-          include: {
-            model: Category,
-            as: 'category',
-            attributes: ['name', 'id'], // hasta aquí bien
-            // Error
-            // include: {
-            //   model: CategoryVideo,
-            //   as: 'video',
-            //   attributes: ['video_id'],
-            //   include: {
-            //     model: Video,
-            //     as: 'video',
-            //     attributes: ['title', 'url']
-            //   }
-            // }
+        include: [
+          {
+            model: CourseCategory,
+            as: 'categorys',
+            attributes: ['categoryId'],
+            include: {
+                model: Category,
+                as: 'category',
+                attributes: ['name']
+              }
           },
-          
-        },
-        
+          {
+              model: Video,
+              as: 'videos',
+              attributes: ['title', 'url']
+          }
+        ]
       });
       return result;
     } catch (error) {

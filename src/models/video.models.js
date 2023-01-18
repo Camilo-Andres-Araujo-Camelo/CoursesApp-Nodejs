@@ -20,11 +20,6 @@ const Video = db.define("video", {
     type: DataTypes.INTEGER,
     allowNull: false,
     field: 'course_id'
-  },
-  categoryId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    field: 'category_id'
   }
 });
 

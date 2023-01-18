@@ -10,7 +10,7 @@ const getAllCourses = async (req, res) => {
   }
 };
 
-const getCoursesInfo = async (req, res) => {
+const getCoursesVideos = async (req, res) => {
   try {
     const result = await CourseServices.getWithCategoriesAndVideos();
     res.json({
@@ -45,7 +45,7 @@ const updateCourse = async (req, res) => {
 
 module.exports = {
   getAllCourses,
-  getCoursesInfo,
+  getCoursesVideos,
   createCourse,
   updateCourse
 }

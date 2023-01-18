@@ -5,7 +5,6 @@ const UserCourse = require('../models/userCourse.models')
 const Video = require('../models/video.models');
 const Category = require('../models/category.models');
 const CourseCategory = require('../models/courseCategory.models');
-const CategoryVideo = require('../models/categoryVideo.models')
 
 const users = [
   { firstName: "Juan", lastName: "Perez", password: "1234", email: "juan@gmail.com" }, // 1
@@ -28,10 +27,10 @@ const categories = [
 ];
 
 const videos = [
-  { title: 'Primera clase React', url: 'https://www.youtube.com/watch?v=saGYMhApaH8', courseId: 1, categoryId: 1}, // 1
-  { title: 'Primera clase Node', url: 'https://www.youtube.com/watch?v=doLMt10ytHY', courseId: 2, categoryId: 2}, // 2
-  { title: 'Primera clase HTML and CSS', url: 'https://www.youtube.com/watch?v=p38WgakuYDo', courseId: 3, categoryId: 3}, // 3
-  { title: 'Intro Web development', url: 'https://www.youtube.com/watch?v=A95yW-LVnbY', courseId: 4, categoryId: 4} // 4
+  { title: 'Primera clase React', url: 'https://www.youtube.com/watch?v=saGYMhApaH8', courseId: 1}, // 1
+  { title: 'Primera clase Node', url: 'https://www.youtube.com/watch?v=doLMt10ytHY', courseId: 2}, // 2
+  { title: 'Primera clase HTML and CSS', url: 'https://www.youtube.com/watch?v=p38WgakuYDo', courseId: 3}, // 3
+  { title: 'Intro Web development', url: 'https://www.youtube.com/watch?v=A95yW-LVnbY', courseId: 4} // 4
 ];
 
 const userCourse = [
@@ -51,13 +50,6 @@ const coursesCategorys = [
   { courseId: 3, categoryId: 3},
   { courseId: 3, categoryId: 4},
 ];
-
-const categoryVideo = [
-  { videoId: 1, categoryId: 1 },
-  { videoId: 2, categoryId: 2 },
-  { videoId: 3, categoryId: 3 },
-  { videoId: 4, categoryId: 4 },
-]
 
 // db.sync( {alter:true} ) // Sincronizar y fuerza la alteración de las tablas
 db.sync({ force: true })
@@ -79,9 +71,5 @@ db.sync({ force: true })
         setTimeout(() => {
           coursesCategorys.forEach((cc) => CourseCategory.create(cc));
         }, 450);
-        setTimeout(() => {
-          categoryVideo.forEach((vc) => CategoryVideo.create(vc));
-        }, 600);
-
     })
     .catch( err => console.log(err) )

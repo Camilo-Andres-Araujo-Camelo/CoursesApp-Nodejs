@@ -4,7 +4,6 @@ const UserCourse = require('./userCourse.models');
 const Video = require('./video.models');
 const Category = require('./category.models');
 const CourseCategory = require('./courseCategory.models');
-const CategoryVideo = require('./categoryVideo.models')
 
 const initModels = () => {
 
@@ -22,12 +21,6 @@ const initModels = () => {
 
   Video.belongsTo(Course, { as: 'course', foreignKey: 'course_id' });
   Course.hasMany(Video, { as: 'videos', foreignKey: 'course_id' }); // bien
-
-  CategoryVideo.belongsTo(Video, { as: 'video', foreignKey: 'video_Id' });
-  Video.hasMany(CategoryVideo, { as: 'categories', foreignKey: 'video_Id' }); // bien
-
-  CategoryVideo.belongsTo(Category, { as: 'category', foreignKey: 'category_Id' });
-  Category.hasMany(CategoryVideo, { as: 'video', foreignKey: 'category_Id' }); // bien
   
 }
 
